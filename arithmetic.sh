@@ -8,4 +8,5 @@ read -p "enter number:" c
 
 #calculate expression
 result1=`echo "$a+$b*$c"| bc`
+result2=`echo "$a*$b+$c"| bc`
 
