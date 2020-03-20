@@ -10,5 +10,6 @@ read -p "enter number:" c
 result1=`echo "$a+$b*$c" | bc`
 result2=`echo "$a*$b+$c" | bc`
 result3=`echo "$c+$a/$b" | bc -l`
+result4=`echo "$a%$b+$c" | bc -l`
 
 
