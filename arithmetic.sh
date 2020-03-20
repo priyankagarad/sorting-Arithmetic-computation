@@ -19,7 +19,18 @@ dictionary[2]=$result2
 dictionary[3]=$result3
 dictionary[4]=$result4
 
+#store result in dictionary
 echo "${!dictionary[@]}"
 echo "${dictionary[@]}"
+
+#created array and store dictionary value in array
+declare -A array
+count=0
+for key in ${!dictionary[@]};
+do
+	array[((count++))]=${dictionary[$key]}
+	echo -e "${array[@]}"
+done
+
 
 
