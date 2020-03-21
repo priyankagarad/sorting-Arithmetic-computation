@@ -7,10 +7,10 @@ read -p "enter number:" b
 read -p "enter number:" c
 
 #calculate expression
-result1=`echo "$a+$b*$c" | bc`
-result2=`echo "$a*$b+$c" | bc`
-result3=`echo "scale=2; $c+$a/$b" | bc -l`
-result4=`echo "scale=2; $a%$b+$c" | bc -l`
+result1=`echo " $a+$b*$c" | bc `
+result2=`echo " $a*$b+$c" | bc `
+result3=`echo " $c+$a/$b" | bc `
+result4=`echo " $a%$b+$c" | bc `
 
 #create Dictionary
 declare -A dictionary
@@ -25,12 +25,28 @@ echo "${dictionary[@]}"
 
 #created array and store dictionary value in array
 declare -A array
-count=0
+key=1
 for key in ${!dictionary[@]};
 do
-	array[((count++))]=${dictionary[$key]}
-	echo -e "${array[@]}"
+	array[$key]=${dictionary[$key]}
 done
+
+echo "${array[@]}"
+
+#sorted array in descending order
+for (( i=1;i<=4;i++ ))
+do
+	for (( j=$((i+1));j<=4;j++ ))
+	do
+		if [[ ${array[$i]} -lt ${array[$j]} ]]
+		then
+			temp=${array[$i]}
+			array[$i]=${array[$j]}
+			array[$j]=$temp
+		fi
+	done
+done
+echo "${array[@]}"
 
 
 
